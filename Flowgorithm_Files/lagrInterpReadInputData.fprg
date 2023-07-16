@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Administrator"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-04-06 12:33:57 PM"/>
+        <attribute name="created" value="QWRtaW5pc3RyYXRvcjtTQ09SUElPTjsyMDIzLTA0LTA2OzExOjM2OjM3IEFNOzMyNjU="/>
+        <attribute name="edited" value="QWRtaW5pc3RyYXRvcjtTQ09SUElPTjsyMDIzLTA0LTA2OzEyOjE0OjU5IFBNOzI7QWRtaW5pc3RyYXRvcjtTQ09SUElPTjsyMDIzLTAzLTMwOzEwOjQwOjA2IEFNO250aFJvb3RSZWFkRGF0YTIuZnByZzs4Nzk0"/>
+        <attribute name="edited" value="QWRtaW5pc3RyYXRvcjtTQ09SUElPTjsyMDIzLTA0LTA2OzEyOjMzOjU3IFBNOzM7MzM5MA=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="k" type="Integer" array="False" size=""/>
+            <declare name="xInterp, yInterp, lval, interpData4x, interpData4y, lagrparams" type="Integer" array="False" size=""/>
+            <declare name="params" type="Real" array="True" size="2"/>
+            <call expression="readParameters(params)"/>
+            <declare name="xvals, yvals" type="Real" array="True" size="params[0]"/>
+            <call expression="readInterpData4x(xvals,params)"/>
+            <call expression="readInterpData4y(yvals,params)"/>
+        </body>
+    </function>
+    <function name="readinterpData4y" type="None" variable="">
+        <parameters>
+            <parameter name="yvals" type="Real" array="True"/>
+            <parameter name="params" type="Real" array="True"/>
+        </parameters>
+        <body>
+            <declare name="interpData4y" type="Real" array="False" size=""/>
+            <declare name="j" type="Integer" array="False" size=""/>
+            <open expression="&quot;interpData4y.txt&quot;" mode="read"/>
+            <for variable="j" start="0" end="params[0]  - 1" direction="inc" step="1">
+                <read variable="interpData4y"/>
+                <assign variable="yvals[j]" expression="interpData4y"/>
+            </for>
+            <close/>
+        </body>
+    </function>
+    <function name="readInterpData4x" type="None" variable="">
+        <parameters>
+            <parameter name="xvals" type="Real" array="True"/>
+            <parameter name="params" type="Real" array="True"/>
+        </parameters>
+        <body>
+            <declare name="interpData4x" type="Real" array="False" size=""/>
+            <declare name="j" type="Integer" array="False" size=""/>
+            <open expression="&quot;interpData4x.txt&quot;" mode="read"/>
+            <for variable="j" start="0" end="params[0]  - 1" direction="inc" step="1">
+                <read variable="interpData4x"/>
+                <assign variable="xvals[j]" expression="interpData4x"/>
+            </for>
+            <close/>
+        </body>
+    </function>
+    <function name="readParameters" type="None" variable="">
+        <parameters>
+            <parameter name="params" type="Real" array="True"/>
+        </parameters>
+        <body>
+            <declare name="lagrParams" type="Real" array="False" size=""/>
+            <declare name="j" type="Integer" array="False" size=""/>
+            <open expression="&quot;lagrParams.txt&quot;" mode="read"/>
+            <for variable="j" start="0" end="1" direction="inc" step="1">
+                <read variable="lagrParams"/>
+                <assign variable="params[j]" expression="lagrParams"/>
+            </for>
+            <close/>
+        </body>
+    </function>
+</flowgorithm>

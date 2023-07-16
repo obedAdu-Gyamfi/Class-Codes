@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Administrator"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-04-22 04:12:58 PM"/>
+        <attribute name="created" value="QWRtaW5pc3RyYXRvcjtTQ09SUElPTjsyMDIzLTA0LTIyOzAzOjU3OjQ3IFBNOzMyODM="/>
+        <attribute name="edited" value="QWRtaW5pc3RyYXRvcjtTQ09SUElPTjsyMDIzLTA0LTIyOzA0OjEyOjU4IFBNOzI7MzM4Ng=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="Belinda" type="Real" array="True" size="10"/>
+            <declare name="passMark, paulina" type="Real" array="False" size=""/>
+            <declare name="k, nPass, nTrail" type="Integer" array="False" size=""/>
+            <assign variable="nPass" expression="0"/>
+            <assign variable="nTrail" expression="0"/>
+            <assign variable="passMark" expression="40"/>
+            <open expression="&quot;paulina.txt&quot;" mode="read"/>
+            <for variable="k" start="0" end="size(Belinda) - 1" direction="inc" step="1">
+                <read variable="paulina"/>
+                <assign variable="Belinda[k]" expression="paulina"/>
+                <if expression="Belinda[k] &gt;= passMark">
+                    <then>
+                        <assign variable="nPass" expression="nPass + 1"/>
+                    </then>
+                    <else>
+                        <assign variable="nTrail" expression="nTrail + 1"/>
+                    </else>
+                </if>
+            </for>
+            <close/>
+            <output expression="&quot;Number of Passes = &quot; &amp; nPass &amp; Tochar(13) &amp; &quot;Number of Trails = &quot; &amp; nTrail" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>

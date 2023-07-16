@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Administrator"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-04-06 08:56:33 AM"/>
+        <attribute name="created" value="QWRtaW5pc3RyYXRvcjtTQ09SUElPTjsyMDIzLTAzLTE0OzExOjI2OjM4IEFNOzMyNjM="/>
+        <attribute name="edited" value="QWRtaW5pc3RyYXRvcjtTQ09SUElPTjsyMDIzLTA0LTA2OzA4OjU2OjMzIEFNOzk7MzM4NQ=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="inputs" type="Real" array="True" size="6"/>
+            <declare name="k, N" type="Integer" array="False" size=""/>
+            <declare name="mean" type="Real" array="False" size=""/>
+            <declare name="Max, Min, Range, rangeData" type="Real" array="False" size=""/>
+            <declare name="initMin" type="Boolean" array="False" size=""/>
+            <assign variable="Max" expression="0"/>
+            <assign variable="initMin" expression="false"/>
+            <open expression="&quot;rangeData.txt&quot;" mode="read"/>
+            <for variable="k" start="0" end="size(inputs) - 1" direction="inc" step="1">
+                <read variable="rangeData"/>
+                <assign variable="inputs[k]" expression="rangeData"/>
+                <if expression="inputs[k] &gt; Max">
+                    <then>
+                        <if expression="initMin == false">
+                            <then>
+                                <assign variable="Min" expression="inputs[k]"/>
+                            </then>
+                            <else/>
+                        </if>
+                        <if expression="inputs[k] &lt; Min">
+                            <then>
+                                <assign variable="Min" expression="inputs[k]"/>
+                            </then>
+                            <else/>
+                        </if>
+                        <assign variable="Max" expression="inputs[k]"/>
+                        <assign variable="initMin" expression="true"/>
+                    </then>
+                    <else>
+                        <if expression="inputs[k] &lt; Min">
+                            <then>
+                                <assign variable="Min" expression="inputs[k]"/>
+                            </then>
+                            <else/>
+                        </if>
+                    </else>
+                </if>
+            </for>
+            <close/>
+            <assign variable="Range" expression="Max - Min"/>
+            <output expression="&quot;Range:  &quot; &amp; Range &amp; Tochar(13) &amp; &quot;Max; &quot; &amp; Max &amp; Tochar(13) &amp; &quot;Min:  &quot; &amp; Min" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>

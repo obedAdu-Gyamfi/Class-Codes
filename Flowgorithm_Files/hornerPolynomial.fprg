@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Administrator"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-05-17 10:12:29 PM"/>
+        <attribute name="created" value="QWRtaW5pc3RyYXRvcjtTQ09SUElPTjsyMDIzLTA1LTE3OzEyOjQ4OjI0IEFNOzMyNjg="/>
+        <attribute name="edited" value="QWRtaW5pc3RyYXRvcjtTQ09SUElPTjsyMDIzLTA1LTE3OzEwOjEyOjI5IFBNOzM7MzM4Nw=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="inputs" type="Integer" array="True" size="4"/>
+            <call expression="xVal(inputs)"/>
+        </body>
+    </function>
+    <function name="xVal" type="None" variable="">
+        <parameters>
+            <parameter name="inputs" type="Integer" array="True"/>
+        </parameters>
+        <body>
+            <declare name="polyData, x" type="Integer" array="False" size=""/>
+            <declare name="S, K, J" type="Integer" array="False" size=""/>
+            <output expression="&quot;Enter the value of X: &quot;" newline="True"/>
+            <input variable="x"/>
+            <open expression="&quot;polyData.txt&quot;" mode="read"/>
+            <for variable="K" start="0" end="size(inputs) - 1" direction="inc" step="1">
+                <read variable="polyData"/>
+                <assign variable="inputs[K]" expression="polyData"/>
+            </for>
+            <close/>
+            <assign variable="S" expression="inputs[0]"/>
+            <for variable="J" start="1" end="size(inputs) - 1" direction="inc" step="1">
+                <assign variable="S" expression="x * S + inputs[J]"/>
+            </for>
+            <output expression="&quot;The value of S: &quot; &amp;S" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>

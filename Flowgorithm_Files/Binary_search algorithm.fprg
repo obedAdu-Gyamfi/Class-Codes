@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Administrator"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-02-21 10:32:57 AM"/>
+        <attribute name="created" value="QWRtaW5pc3RyYXRvcjtTQ09SUElPTjsyMDIzLTAyLTIxOzEwOjIyOjAwIEFNOzMyNDQ="/>
+        <attribute name="edited" value="QWRtaW5pc3RyYXRvcjtTQ09SUElPTjsyMDIzLTAyLTIxOzEwOjMyOjU3IEFNOzE7MzM2NQ=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="list" type="Integer" array="False" size=""/>
+            <declare name="target" type="Integer" array="False" size=""/>
+            <declare name="first" type="Integer" array="False" size=""/>
+            <declare name="last" type="Integer" array="False" size=""/>
+            <declare name="midpoint" type="Integer" array="False" size=""/>
+            <assign variable="first" expression="0"/>
+            <assign variable="last" expression="length(list)"/>
+            <while expression="first &lt;= last">
+                <assign variable="midpoint" expression="(first + last)/2"/>
+                <if expression="list(midpoint) == target">
+                    <then>
+                        <output expression="midpoint" newline="True"/>
+                    </then>
+                    <else>
+                        <if expression="list(midpoint) &lt; target">
+                            <then>
+                                <assign variable="first" expression="midpoint + 1"/>
+                            </then>
+                            <else>
+                                <assign variable="last" expression="midpoint - 1"/>
+                            </else>
+                        </if>
+                    </else>
+                </if>
+            </while>
+        </body>
+    </function>
+</flowgorithm>

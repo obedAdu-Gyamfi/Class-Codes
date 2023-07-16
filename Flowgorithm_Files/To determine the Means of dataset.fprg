@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Administrator"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-03-19 03:07:53 AM"/>
+        <attribute name="created" value="QWRtaW5pc3RyYXRvcjtTQ09SUElPTjsyMDIzLTAzLTE4OzAyOjE1OjAzIFBNOzMyNzI="/>
+        <attribute name="edited" value="QWRtaW5pc3RyYXRvcjtTQ09SUElPTjsyMDIzLTAzLTE5OzAzOjA3OjUzIEFNOzQ7MzM3Ng=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="N, data, K, exception" type="Integer" array="False" size=""/>
+            <declare name="ProData, sumData, sumRecData, arithmeticMean, geometricMean, harmonicMean" type="Real" array="False" size=""/>
+            <output expression="&quot; Enter N&quot;" newline="True"/>
+            <input variable="N"/>
+            <assign variable="sumData" expression="0"/>
+            <assign variable="exception" expression="0"/>
+            <assign variable="proData" expression="1"/>
+            <assign variable="sumRecData" expression="0"/>
+            <for variable="K" start="1" end="N" direction="inc" step="1">
+                <output expression="&quot;Enter data&quot;" newline="True"/>
+                <input variable="data"/>
+                <assign variable="sumData" expression="sumData + data"/>
+                <assign variable="proData" expression="proData * data"/>
+                <if expression="data != 0">
+                    <then>
+                        <assign variable="sumRecData" expression="sumRecData + ( 1 / data)"/>
+                    </then>
+                    <else>
+                        <output expression="&quot;Division by zero error! for the harmonic mean&quot;" newline="True"/>
+                        <assign variable="exception" expression="exception + 1"/>
+                    </else>
+                </if>
+            </for>
+            <if expression="exception &gt;= 1">
+                <then>
+                    <output expression="&quot;Cannot calculate harmonic mean&quot;" newline="True"/>
+                    <assign variable="arithmeticMean" expression="sumData / N"/>
+                    <assign variable="geometricMean" expression="proData ^ (1 / N)"/>
+                    <output expression="&quot; Arithmetic Mean:  &quot; &amp;&#13;&#10; arithmeticMean &amp; Tochar(13) &amp; &quot; Geometric Mean: &quot; &amp; geometricMean" newline="True"/>
+                </then>
+                <else>
+                    <assign variable="harmonicMean" expression="N / sumRecData"/>
+                    <assign variable="arithmeticMean" expression="sumData / N"/>
+                    <assign variable="geometricMean" expression="proData ^ (1 / N)"/>
+                    <output expression="&quot; Arithmetic Mean:  &quot; &amp;&#13;&#10; arithmeticMean &amp; Tochar(13) &amp; &quot; Geometric Mean: &quot; &amp; geometricMean &amp; Tochar(13) &amp; &quot;Harmonic Mean;  &quot; &amp; harmonicMean" newline="True"/>
+                </else>
+            </if>
+        </body>
+    </function>
+</flowgorithm>

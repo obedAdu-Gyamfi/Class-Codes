@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Administrator"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-04-21 12:04:27 PM"/>
+        <attribute name="created" value="QWRtaW5pc3RyYXRvcjtTQ09SUElPTjsyMDIzLTAzLTE4OzAyOjE1OjAzIFBNOzMyNzI="/>
+        <attribute name="edited" value="QWRtaW5pc3RyYXRvcjtTQ09SUElPTjsyMDIzLTA0LTIxOzEyOjA0OjI3IFBNOzEwOzM0Mjg="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="parameters" type="Real" array="True" size="1"/>
+            <call expression="readArgs(parameters)"/>
+            <declare name="values" type="Real" array="True" size="parameters[0]"/>
+            <call expression="readValues(values,parameters)"/>
+        </body>
+    </function>
+    <function name="readArgs" type="None" variable="">
+        <parameters>
+            <parameter name="parameters" type="Real" array="True"/>
+        </parameters>
+        <body>
+            <declare name="meanParameters" type="Real" array="False" size=""/>
+            <declare name="j" type="Integer" array="False" size=""/>
+            <open expression="&quot;meanParameters.txt&quot;" mode="read"/>
+            <for variable="j" start="0" end="size(parameters) -1" direction="inc" step="1">
+                <read variable="meanParameters"/>
+                <assign variable="parameters[j]" expression="meanParameters"/>
+            </for>
+            <close/>
+        </body>
+    </function>
+    <function name="readValues" type="None" variable="">
+        <parameters>
+            <parameter name="Values" type="Real" array="True"/>
+            <parameter name="parameters" type="Real" array="True"/>
+        </parameters>
+        <body>
+            <declare name="meanData, sumData, proData, sumRecData, arithmeticMean, geometricMean, harmonicMean" type="Real" array="False" size=""/>
+            <declare name="k, exceptions" type="Integer" array="False" size=""/>
+            <open expression="&quot;meanData.txt&quot;" mode="read"/>
+            <assign variable="sumData" expression="0"/>
+            <assign variable="proData" expression="1"/>
+            <assign variable="sumRecData" expression="0"/>
+            <assign variable="exceptions" expression="0"/>
+            <for variable="k" start="0" end="parameters[0] - 1" direction="inc" step="1">
+                <read variable="meanData"/>
+                <assign variable="values[k]" expression="meanData"/>
+                <assign variable="sumData" expression="sumData + values[k]"/>
+                <assign variable="proData" expression="proData * values[k]"/>
+                <if expression="values[k] != 0">
+                    <then>
+                        <assign variable="sumRecData" expression="sumRecData + ( 1 / values[k])"/>
+                    </then>
+                    <else>
+                        <output expression="&quot;Division by zero error! for the harmonic mean&quot;" newline="True"/>
+                        <assign variable="exceptions" expression="exceptions + 1"/>
+                    </else>
+                </if>
+            </for>
+            <close/>
+            <if expression="exceptions &gt;= 1">
+                <then>
+                    <output expression="&quot;Cannot calculate harmonic mean&quot;" newline="True"/>
+                    <assign variable="arithmeticMean" expression="sumData / parameters[0]"/>
+                    <assign variable="geometricMean" expression="proData ^ (1 / parameters[0])"/>
+                    <output expression="&quot; Arithmetic Mean:  &quot; &amp;&#13;&#10; arithmeticMean &amp; Tochar(13) &amp; &quot; Geometric Mean: &quot; &amp; geometricMean" newline="True"/>
+                </then>
+                <else>
+                    <assign variable="harmonicMean" expression="parameters[0] / sumRecData"/>
+                    <assign variable="arithmeticMean" expression="sumData / parameters[0]"/>
+                    <assign variable="geometricMean" expression="proData ^ (1 / parameters[0])"/>
+                    <output expression="&quot; Arithmetic Mean:  &quot; &amp;&#13;&#10; arithmeticMean &amp; Tochar(13) &amp; &quot; Geometric Mean: &quot; &amp; geometricMean &amp; Tochar(13) &amp; &quot;Harmonic Mean;  &quot; &amp; harmonicMean" newline="True"/>
+                </else>
+            </if>
+        </body>
+    </function>
+</flowgorithm>

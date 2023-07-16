@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Administrator"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-03-21 12:53:44 PM"/>
+        <attribute name="created" value="QWRtaW5pc3RyYXRvcjtTQ09SUElPTjsyMDIzLTAzLTIxOzEyOjE5OjEzIFBNOzMyNzI="/>
+        <attribute name="edited" value="QWRtaW5pc3RyYXRvcjtTQ09SUElPTjsyMDIzLTAzLTIxOzEyOjUzOjQ0IFBNOzI7MzM4Mw=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="N, K" type="Integer" array="False" size=""/>
+            <declare name="X, lasTerm, upTerm, expX, P" type="Real" array="False" size=""/>
+            <output expression="&quot;Enter Datapoint X&quot;" newline="True"/>
+            <input variable="X"/>
+            <comment text="This new assignment of X is for an evaluated funtion where we were to calculate Exp(1/2)"/>
+            <assign variable="X" expression="X/2"/>
+            <output expression="&quot;Enter the number of terms&quot;" newline="True"/>
+            <input variable="N"/>
+            <assign variable="lasTerm" expression="1"/>
+            <assign variable="expX" expression="lasTerm"/>
+            <for variable="K" start="1" end="N" direction="inc" step="1">
+                <assign variable="upTerm" expression="lasTerm * (X / K)"/>
+                <assign variable="expX" expression="expX + upTerm"/>
+                <assign variable="lasTerm" expression="upTerm"/>
+            </for>
+            <assign variable="P" expression="(1/(2* 3.14141592654)^(1/2)) * expX"/>
+            <output expression="&quot;ExpX : &quot; &amp; expX &amp; Tochar(13) &amp; &quot;P: &quot; &amp; P" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>

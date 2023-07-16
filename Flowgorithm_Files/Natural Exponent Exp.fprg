@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Administrator"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-03-23 11:20:47 AM"/>
+        <attribute name="created" value="QWRtaW5pc3RyYXRvcjtTQ09SUElPTjsyMDIzLTAzLTIxOzEyOjE5OjEzIFBNOzMyNzI="/>
+        <attribute name="edited" value="QWRtaW5pc3RyYXRvcjtTQ09SUElPTjsyMDIzLTAzLTIzOzExOjIwOjQ3IEFNOzM7MzM2Nw=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="N, K" type="Integer" array="False" size=""/>
+            <declare name="X, lasTerm, upTerm, expX" type="Real" array="False" size=""/>
+            <output expression="&quot;Enter Datapoint X&quot;" newline="True"/>
+            <input variable="X"/>
+            <output expression="&quot;Enter the number of terms&quot;" newline="True"/>
+            <input variable="N"/>
+            <assign variable="lasTerm" expression="1"/>
+            <assign variable="expX" expression="lasTerm"/>
+            <for variable="K" start="1" end="N" direction="inc" step="1">
+                <assign variable="upTerm" expression="lasTerm * (X / K)"/>
+                <assign variable="expX" expression="expX + upTerm"/>
+                <assign variable="lasTerm" expression="upTerm"/>
+            </for>
+            <output expression="&quot;ExpX : &quot; &amp; expX" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>

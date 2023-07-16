@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Administrator"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-03-16 11:28:30 PM"/>
+        <attribute name="created" value="QWRtaW5pc3RyYXRvcjtTQ09SUElPTjsyMDIzLTAzLTE0OzExOjI2OjM4IEFNOzMyNjM="/>
+        <attribute name="edited" value="QWRtaW5pc3RyYXRvcjtTQ09SUElPTjsyMDIzLTAzLTE2OzExOjI4OjMwIFBNOzI7MzM4Mw=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="k, nofStds, nofPasses, nofTrails" type="Integer" array="False" size=""/>
+            <declare name="stdMarks, passMark, totScorePass, totScoreTrail, meanPassScore, meanTrailScore" type="Real" array="False" size=""/>
+            <output expression="&quot;Enter the number of students&quot;" newline="True"/>
+            <input variable="nofStds"/>
+            <assign variable="passMark" expression="40"/>
+            <assign variable="nofPasses" expression="0"/>
+            <assign variable="totScorePass" expression="0"/>
+            <assign variable="totScoreTrail" expression="0"/>
+            <assign variable="nofTrails" expression="0"/>
+            <for variable="k" start="1" end="nofStds" direction="inc" step="1">
+                <output expression="&quot; Enter the score of the student: &quot;" newline="True"/>
+                <input variable="stdMarks"/>
+                <if expression="stdMarks &gt;= passMark">
+                    <then>
+                        <assign variable="nofPasses" expression="nofPasses + 1"/>
+                        <assign variable="totScorePass" expression="totScorePass + stdMarks"/>
+                    </then>
+                    <else>
+                        <assign variable="nofTrails" expression="nofTrails + 1"/>
+                        <assign variable="totScoreTrail" expression="totScoreTrail + stdMarks"/>
+                    </else>
+                </if>
+            </for>
+            <if expression="nofPasses != 0">
+                <then>
+                    <assign variable="meanPassScore" expression="totScorePass / nofPasses"/>
+                    <output expression="&quot;Number of  stds:  &quot; &amp; nofStds &amp; Tochar(13) &amp; &quot;Passed:  &quot; &amp; nofPasses &amp; Tochar(13) &amp; &quot;Trailed: &quot; &amp; nofTrails &amp; Tochar(13) &amp; &quot;The average mean Pass:  &quot; &amp; meanPassScore &amp; Tochar(13)" newline="True"/>
+                </then>
+                <else>
+                    <output expression="&quot; Mean Of Pass Does Not Exit! &quot;" newline="True"/>
+                </else>
+            </if>
+            <if expression="nofTrails != 0">
+                <then>
+                    <assign variable="meanTrailScore" expression="totScoreTrail / nofTrails"/>
+                    <output expression="&quot;Number of  stds:  &quot; &amp; nofStds &amp; Tochar(13) &amp; &quot;Passed:  &quot; &amp; nofPasses &amp; Tochar(13) &amp; &quot;Trailed: &quot; &amp; nofTrails &amp; Tochar(13) &amp;  &quot;The average mean Trail:  &quot; &amp; meanTrailScore" newline="True"/>
+                </then>
+                <else>
+                    <output expression="&quot; Mean of Trails Doe not Exist! &quot;" newline="True"/>
+                </else>
+            </if>
+        </body>
+    </function>
+</flowgorithm>

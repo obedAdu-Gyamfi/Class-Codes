@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Administrator"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-03-18 02:15:00 PM"/>
+        <attribute name="created" value="QWRtaW5pc3RyYXRvcjtTQ09SUElPTjsyMDIzLTAzLTE4OzExOjAxOjU4IEFNOzMyNjI="/>
+        <attribute name="edited" value="QWRtaW5pc3RyYXRvcjtTQ09SUElPTjsyMDIzLTAzLTE4OzAyOjE1OjAwIFBNOzc7MzM4Mw=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="N, Factorial, K" type="Integer" array="False" size=""/>
+            <output expression="&quot;Enter Number: &quot;" newline="True"/>
+            <input variable="N"/>
+            <assign variable="Factorial" expression="1"/>
+            <if expression="N &gt; 0">
+                <then>
+                    <for variable="K" start="N" end="1" direction="dec" step="1">
+                        <assign variable="Factorial" expression="Factorial * K"/>
+                    </for>
+                    <output expression="&quot; The factorial of N:  &quot; &amp; Factorial" newline="True"/>
+                </then>
+                <else>
+                    <output expression="&quot;Enter a Positive Number&quot;" newline="True"/>
+                </else>
+            </if>
+        </body>
+    </function>
+</flowgorithm>

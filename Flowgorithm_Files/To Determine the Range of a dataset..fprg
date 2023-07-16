@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Administrator"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-03-25 03:55:02 PM"/>
+        <attribute name="created" value="QWRtaW5pc3RyYXRvcjtTQ09SUElPTjsyMDIzLTAzLTE0OzExOjI2OjM4IEFNOzMyNjM="/>
+        <attribute name="edited" value="QWRtaW5pc3RyYXRvcjtTQ09SUElPTjsyMDIzLTAzLTI1OzAzOjU1OjAyIFBNOzg7MzM4OQ=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="k, N" type="Integer" array="False" size=""/>
+            <declare name="mean" type="Real" array="False" size=""/>
+            <declare name="data, Max, Min, Range" type="Real" array="False" size=""/>
+            <declare name="initMin" type="Boolean" array="False" size=""/>
+            <output expression="&quot;Enter the size of the dataset&quot;" newline="True"/>
+            <input variable="N"/>
+            <assign variable="Max" expression="0"/>
+            <assign variable="initMin" expression="false"/>
+            <for variable="k" start="1" end="N" direction="inc" step="1">
+                <output expression="&quot; Enter Data&quot;" newline="True"/>
+                <input variable="data"/>
+                <if expression="data &gt; Max">
+                    <then>
+                        <if expression="initMin == false">
+                            <then>
+                                <assign variable="Min" expression="data"/>
+                            </then>
+                            <else/>
+                        </if>
+                        <if expression="data &lt; Min">
+                            <then>
+                                <assign variable="Min" expression="data"/>
+                            </then>
+                            <else/>
+                        </if>
+                        <assign variable="Max" expression="data"/>
+                        <assign variable="initMin" expression="true"/>
+                    </then>
+                    <else>
+                        <if expression="data &lt; Min">
+                            <then>
+                                <assign variable="Min" expression="data"/>
+                            </then>
+                            <else/>
+                        </if>
+                    </else>
+                </if>
+            </for>
+            <assign variable="Range" expression="Max - Min"/>
+            <output expression="&quot;Data Size:  &quot; &amp; N &amp; Tochar(13) &amp; &quot;Range:  &quot; &amp; Range &amp; Tochar(13) &amp; &quot;Max; &quot; &amp; Max &amp; Tochar(13) &amp; &quot;Min:  &quot; &amp; Min" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>

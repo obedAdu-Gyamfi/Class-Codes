@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Administrator"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-03-27 03:11:57 AM"/>
+        <attribute name="created" value="QWRtaW5pc3RyYXRvcjtTQ09SUElPTjsyMDIzLTAzLTI3OzAyOjE2OjE5IEFNOzMyNjU="/>
+        <attribute name="edited" value="QWRtaW5pc3RyYXRvcjtTQ09SUElPTjsyMDIzLTAzLTI3OzAzOjExOjU3IEFNOzQ7MzM3NA=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <comment text="MATH GROUP 22&#13;&#10;OBED ADU-GYAMFI - 8597421&#13;&#10;MACCARTHY MARIAMA - 8605121&#13;&#10;YEMANYI DERRICK - 8610721&#13;&#10;MUNTAKA ISSAH - 8606021&#13;&#10;YANKEY GEORGE - 8610521"/>
+            <declare name="markExam, markCA, markTotal" type="Real" array="False" size=""/>
+            <declare name="maxNumAtmps, numAtmps" type="Integer" array="False" size=""/>
+            <declare name="courseCode, grade, status" type="String" array="False" size=""/>
+            <assign variable="maxNumAtmps" expression="3"/>
+            <output expression="&quot;Enter Course Code: &quot;" newline="True"/>
+            <input variable="courseCode"/>
+            <assign variable="numAtmps" expression="1"/>
+            <do expression="numAtmps &lt;= maxNumAtmps AND NOT(markCA &gt;=0 AND markCA &lt;= 30)">
+                <output expression="&quot;Enter Continuous Assessment Mark: &quot;" newline="True"/>
+                <input variable="markCA"/>
+                <assign variable="numAtmps" expression="numAtmps + 1"/>
+            </do>
+            <if expression="markCA &gt;= 0 AND markCA &lt;= 30">
+                <then>
+                    <assign variable="numAtmps" expression="1"/>
+                    <do expression="numAtmps &lt;= maxNumAtmps AND NOT(markCA &gt;= 0 AND markExam &lt;= 70)">
+                        <output expression="&quot;Enter Examination Mark: &quot;" newline="True"/>
+                        <input variable="markExam"/>
+                        <assign variable="numAtmps" expression="numAtmps + 1"/>
+                    </do>
+                    <if expression="markExam &gt;= 0 AND markExam &lt;= 70">
+                        <then>
+                            <assign variable="markTotal" expression="markCA + markExam"/>
+                            <if expression="markTotal &gt;= 70">
+                                <then>
+                                    <assign variable="status" expression="&quot;Pass&quot;"/>
+                                    <assign variable="grade" expression="&quot;A&quot;"/>
+                                </then>
+                                <else>
+                                    <if expression="markTotal &gt;= 60">
+                                        <then>
+                                            <assign variable="status" expression="&quot;Pass&quot;"/>
+                                            <assign variable="grade" expression="&quot;B&quot;"/>
+                                        </then>
+                                        <else>
+                                            <if expression="markTotal &gt;= 50">
+                                                <then>
+                                                    <assign variable="status" expression="&quot;Pass&quot;"/>
+                                                    <assign variable="grade" expression="&quot;C&quot;"/>
+                                                </then>
+                                                <else>
+                                                    <if expression="markTotal &gt;= 40">
+                                                        <then>
+                                                            <assign variable="status" expression="&quot;Pass&quot;"/>
+                                                            <assign variable="grade" expression="&quot;D&quot;"/>
+                                                        </then>
+                                                        <else>
+                                                            <assign variable="status" expression="&quot;Trail&quot;"/>
+                                                            <assign variable="grade" expression="&quot;F&quot;"/>
+                                                        </else>
+                                                    </if>
+                                                </else>
+                                            </if>
+                                        </else>
+                                    </if>
+                                </else>
+                            </if>
+                            <output expression="&quot;====================&quot; &amp;Tochar(13) &amp; &quot;Course: &quot; &amp; courseCode &amp; Tochar(13) &amp; &quot;Total Score: &quot;&amp; markTotal &amp; Tochar(13) &amp; &quot;Grade: &quot; &amp; grade &amp; Tochar(13) &amp; &quot;Status&quot; &amp; status &amp; Tochar(13) &amp; &quot;========================&quot;" newline="True"/>
+                        </then>
+                        <else>
+                            <output expression="&quot;An Invalid Exam Mark for &quot; &amp; courseCode &amp; Tochar(13) &amp; &quot;Number of Allowable Trails For Marks Exceeded&quot; &amp; courseCode &amp; Tochar(13) &amp; &quot;0 &lt;= markExam &lt;=70&quot;" newline="True"/>
+                        </else>
+                    </if>
+                </then>
+                <else>
+                    <output expression="&quot;An Invalid Cont. Assessment Mark for &quot; &amp; courseCode &amp; Tochar(13) &amp; &quot;Number of Allowable Trails For Marks Exceeded &quot; &amp; courseCode &amp; Tochar(13) &amp; &quot;0 &lt;= markCA &lt;= 30&quot;" newline="True"/>
+                </else>
+            </if>
+        </body>
+    </function>
+</flowgorithm>

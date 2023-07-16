@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Administrator"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-04-06 11:36:36 AM"/>
+        <attribute name="created" value="QWRtaW5pc3RyYXRvcjtTQ09SUElPTjsyMDIzLTAzLTMwOzEwOjQwOjA2IEFNOzMyNTE="/>
+        <attribute name="edited" value="QWRtaW5pc3RyYXRvcjtTQ09SUElPTjsyMDIzLTA0LTA2OzExOjM2OjM2IEFNOzU7MzM3Ng=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="inputs" type="Real" array="True" size="5"/>
+            <declare name="k, n, kmax" type="Integer" array="False" size=""/>
+            <declare name="x0, R, xOld, xNew, tol" type="Real" array="False" size=""/>
+            <call expression="readnthRootInput(inputs)"/>
+            <assign variable="n" expression="inputs[0]"/>
+            <assign variable="R" expression="inputs[1]"/>
+            <assign variable="x0" expression="inputs[2]"/>
+            <assign variable="kmax" expression="inputs[3]"/>
+            <assign variable="tol" expression="inputs[4]"/>
+            <assign variable="k" expression="0"/>
+            <assign variable="xNew" expression="x0"/>
+            <assign variable="xOld" expression="xNew + 1"/>
+            <while expression="(ABS(xNew - xOld) &gt;= tol) AND k &lt;= kmax">
+                <assign variable="xOld" expression="xNew"/>
+                <assign variable="xNew" expression="(1 / n) * ((n - 1) * xOld  + R *(xOld)^ ( 1 - n))"/>
+                <assign variable="k" expression="k + 1"/>
+            </while>
+            <output expression="&quot;Nth Root of&quot; &amp; &quot;(&quot; &amp; n &amp;&quot;,&quot;  &amp;R &amp; &quot; ) &quot; &amp; &quot;=&quot;   &amp; xNew" newline="True"/>
+        </body>
+    </function>
+    <function name="readnthRootInput" type="None" variable="">
+        <parameters>
+            <parameter name="inputs" type="Real" array="True"/>
+        </parameters>
+        <body>
+            <declare name="nthrootInput" type="Real" array="False" size=""/>
+            <declare name="j" type="Integer" array="False" size=""/>
+            <open expression="&quot;nthrootInput.txt&quot;" mode="read"/>
+            <for variable="j" start="0" end="size(inputs) - 1" direction="inc" step="1">
+                <read variable="nthrootInput"/>
+                <assign variable="inputs[j]" expression="nthrootInput"/>
+            </for>
+            <close/>
+        </body>
+    </function>
+</flowgorithm>

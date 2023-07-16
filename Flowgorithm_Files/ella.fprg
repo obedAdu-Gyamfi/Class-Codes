@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Administrator"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-04-24 03:24:35 PM"/>
+        <attribute name="created" value="QWRtaW5pc3RyYXRvcjtTQ09SUElPTjsyMDIzLTA0LTI0OzEyOjE4OjU4IEFNOzMyNjk="/>
+        <attribute name="edited" value="QWRtaW5pc3RyYXRvcjtTQ09SUElPTjsyMDIzLTA0LTI0OzAzOjI0OjM1IFBNOzI7MzM4NQ=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="inputs" type="Real" array="True" size="2"/>
+            <call expression="ella(inputs)"/>
+        </body>
+    </function>
+    <function name="ella" type="None" variable="">
+        <parameters>
+            <parameter name="inputs" type="Real" array="True"/>
+        </parameters>
+        <body>
+            <declare name="num1, num2, sum, ann" type="Real" array="False" size=""/>
+            <declare name="k" type="Integer" array="False" size=""/>
+            <open expression="&quot;ann.txt&quot;" mode="read"/>
+            <for variable="k" start="0" end="size(inputs) - 1" direction="inc" step="1">
+                <read variable="ann"/>
+                <assign variable="inputs[k]" expression="ann"/>
+            </for>
+            <close/>
+            <assign variable="num1" expression="inputs[0]"/>
+            <assign variable="num2" expression="inputs[1]"/>
+            <assign variable="sum" expression="num1 + num2"/>
+            <output expression="sum" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>

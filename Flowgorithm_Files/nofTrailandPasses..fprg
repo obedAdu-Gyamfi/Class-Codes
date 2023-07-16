@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Administrator"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-04-04 04:14:37 PM"/>
+        <attribute name="created" value="QWRtaW5pc3RyYXRvcjtTQ09SUElPTjsyMDIzLTAzLTE0OzExOjI2OjM4IEFNOzMyNjM="/>
+        <attribute name="edited" value="QWRtaW5pc3RyYXRvcjtTQ09SUElPTjsyMDIzLTA0LTA0OzA0OjE0OjM3IFBNOzQ7MzM4Nw=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="inputs" type="Real" array="True" size="6"/>
+            <declare name="k, nofStds, nofPasses, nofTrails" type="Integer" array="False" size=""/>
+            <declare name="stdMarks, passMark, nofTrailsorPasses" type="Real" array="False" size=""/>
+            <assign variable="passMark" expression="40"/>
+            <assign variable="nofPasses" expression="0"/>
+            <assign variable="nofTrails" expression="0"/>
+            <open expression="&quot;nofTrailsorPasses.txt&quot;" mode="read"/>
+            <for variable="k" start="0" end="size(inputs) - 1" direction="inc" step="1">
+                <read variable="nofTrailsorPasses"/>
+                <assign variable="inputs[k]" expression="nofTrailsorPasses"/>
+                <if expression="inputs[k] &gt;= passMark">
+                    <then>
+                        <assign variable="nofPasses" expression="nofPasses + 1"/>
+                    </then>
+                    <else>
+                        <assign variable="nofTrails" expression="nofTrails + 1"/>
+                    </else>
+                </if>
+            </for>
+            <close/>
+            <output expression="&quot;Passed:  &quot; &amp; nofPasses &amp; Tochar(13) &amp; &quot;Trailed: &quot; &amp; nofTrails" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>

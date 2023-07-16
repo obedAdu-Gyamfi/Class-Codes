@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Administrator"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-04-06 09:25:03 AM"/>
+        <attribute name="created" value="QWRtaW5pc3RyYXRvcjtTQ09SUElPTjsyMDIzLTAzLTIxOzEyOjE5OjEzIFBNOzMyNzI="/>
+        <attribute name="edited" value="QWRtaW5pc3RyYXRvcjtTQ09SUElPTjsyMDIzLTA0LTA2OzA5OjI1OjAzIEFNOzU7MzM3NQ=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="inputs" type="Real" array="True" size="2"/>
+            <declare name="N, K" type="Integer" array="False" size=""/>
+            <declare name="X, lasTerm, upTerm, expX, expData" type="Real" array="False" size=""/>
+            <assign variable="lasTerm" expression="1"/>
+            <assign variable="expX" expression="lasTerm"/>
+            <open expression="&quot;expData.txt&quot;" mode="read"/>
+            <for variable="k" start="0" end="size(inputs) - 1" direction="inc" step="1">
+                <read variable="expData"/>
+                <assign variable="inputs[k]" expression="expData"/>
+            </for>
+            <close/>
+            <for variable="k" start="1" end="inputs[1]" direction="inc" step="1">
+                <assign variable="upTerm" expression="lasTerm * (inputs[0]/ K)"/>
+                <assign variable="expX" expression="expX + upTerm"/>
+                <assign variable="lasTerm" expression="upTerm"/>
+            </for>
+            <output expression="&quot;ExpX : &quot; &amp; expX" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>
