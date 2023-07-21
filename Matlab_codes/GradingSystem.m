@@ -1,11 +1,5 @@
 % Note: The first function listed is executed. main() is not a special function in Matlab/Octave.
 %function main()
-    % MATH GROUP 22
-    % OBED ADU-GYAMFI - 8597421
-    % MACCARTHY MARIAMA - 8605121
-    % YEMANYI DERRICK - 8610721
-    % MUNTAKA ISSAH - 8606021
-    % YANKEY GEORGE - 8610521
     maxNumAtmps = 3;
     courseCode = input('Enter text for courseCode: ', 's');
     numAtmps = 1;
