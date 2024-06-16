@@ -1,0 +1,14 @@
+# List the start up tasks. Learn more: https://www.gitpod.io/docs/configure/workspaces/tasks
+tasks:
+  - name: Install required packages & Open Jupyter Notebook
+    init: pip install -r requirements.txt # runs during prebuild => https://www.gitpod.io/docs/configure/projects/prebuilds
+    command: gp open quickstart-demo.ipynb
+
+vscode:
+  extensions:
+    - ms-toolsai.jupyter
+    - ms-python.python
+
+# List the ports to expose. Learn more: https://www.gitpod.io/docs/configure/workspaces/por
+
+# Learn more from ready-to-use templates: https://www.gitpod.io/docs/introduction/getting-started/quickstart
