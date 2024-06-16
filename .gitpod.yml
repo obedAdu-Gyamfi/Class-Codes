@@ -1,14 +1,17 @@
-# List the start up tasks. Learn more: https://www.gitpod.io/docs/configure/workspaces/tasks
+# .gitpod.yml
+
 tasks:
-  - name: Install required packages & Open Jupyter Notebook
-    init: pip install -r requirements.txt # runs during prebuild => https://www.gitpod.io/docs/configure/projects/prebuilds
-    command: gp open quickstart-demo.ipynb
+  - init: |
+      pip install jupyterlab ipykernel
+      python -m ipykernel install --user --name=python3
+    command: |
+      jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser --allow-root
+
+ports:
+  - port: 8888
+    onOpen: open-preview
 
 vscode:
   extensions:
     - ms-toolsai.jupyter
     - ms-python.python
-
-# List the ports to expose. Learn more: https://www.gitpod.io/docs/configure/workspaces/por
-
-# Learn more from ready-to-use templates: https://www.gitpod.io/docs/introduction/getting-started/quickstart
