@@ -1,8 +1,9 @@
+---
 # .gitpod.yml
 
 tasks:
   - init: |
-      pip install jupyterlab ipykernel
+      pip install jupyterlab ipykernel numpy matplotlib
       python -m ipykernel install --user --name=python3
     command: |
       jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser --allow-root
@@ -15,3 +16,8 @@ vscode:
   extensions:
     - ms-toolsai.jupyter
     - ms-python.python
+    - ms-python.debugpy
+    - ms-toolsai.jupyter-keymap
+    - ms-toolsai.vscode-jupyter-cell-tags
+    - ms-toolsai.vscode-jupyter-slideshow
+    - ms-toolsai.jupyter-renderers
