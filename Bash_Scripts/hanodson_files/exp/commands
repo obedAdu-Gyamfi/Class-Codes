@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+# Creating multiple directories in the PWD
+mkdir -p dir{1..3}
+
+# Changing the PWD
+cd dir1 || exit
+# Changing back into the OLDPWD
+cd - || exit
+# using echo and the redirect symbol
+
+echo -e "This is it\n" >> myfile.txt
+
+# move
+mv myfile.txt dir1/
+#
+cut -d":" -f1 < /etc/passwd > users.txt
+
+awk 'BEGIN{FS=":";OFS=":"} {print $1,$3,$7}' < /etc/passwd
