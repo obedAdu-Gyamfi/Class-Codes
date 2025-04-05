@@ -87,10 +87,10 @@ with open("data.dat", "w") as file:
     file.write("#Iter \t #Bisection \t #Secant \t #Newton \t #Fixed-Point\n")
     for i, b_val, s_val, n_val, f_val in zl( step, b_values, s_values, n_values,fp_values, fillvalue=None
         ):
-        b_str = f"{float(b_val):.10f}" if b_val is not None else " \t"
-        s_str = f"{float(s_val):.10f}" if s_val is not None else " \t"
-        n_str = f"{float(n_val):.10f}" if n_val is not None else " \t"
-        f_str = f"{float(f_val):.10f}" if f_val is not None else " \t"
+        b_str = f"{float(b_val):.10f}" if b_val is not None else "---\t"
+        s_str = f"{float(s_val):.10f}" if s_val is not None else "---\t"
+        n_str = f"{float(n_val):.10f}" if n_val is not None else "---\t"
+        f_str = f"{float(f_val):.10f}" if f_val is not None else "---\t"
         file.write(
             f"{i}\t{b_str}\t{s_str}\t{n_str}\t{f_str}\n"
             )
